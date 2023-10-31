@@ -5,4 +5,9 @@
 
 .tri {
     color: blue;
+    text-transform: uppercase;
+}
+
+.hoverable:hover {
+    background-color: green;
 }
