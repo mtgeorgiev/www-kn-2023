@@ -1,23 +1,14 @@
 <?php
-// declare(strict_types=1);
+declare(strict_types=1);
 
-spl_autoload_register(function($className) {
-
-    $foldersWithClasses = ["./libs", "./libs/other"];
-
-    foreach ($foldersWithClasses as $folder) {
-        $potentialFileName = "$folder/$className.php";
-        if (file_exists($potentialFileName)) {
-            require_once $potentialFileName;
-            break;
-        }
-    }
-
-    require_once "./libs/$className.php";
-});
-
+require_once "bootstrap.php";
 
 $user = new User(1, "myemail@abv.bg");
 echo $user->getId();
 
 echo User::generateRandomId();
+
+$x = 5;
+$y = "2k4";
+
+var_dump($user);
