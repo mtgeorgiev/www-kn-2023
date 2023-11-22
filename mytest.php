@@ -3,12 +3,17 @@ declare(strict_types=1);
 
 require_once "bootstrap.php";
 
-$user = new User(1, "myemail@abv.bg");
-echo $user->getId();
+$sql   = "SELECT * FROM `users`";
 
-echo User::generateRandomId();
+$conn = (new Db())->getConnection();
 
-$x = 5;
-$y = "2k4";
+$selectStatement = $conn->prepare($sql);
 
-var_dump($user);
+$users = [];
+
+$selectStatement->execute([]);
+foreach ($selectStatement->fetchAll() as $row) {
+    $users[] = User::fromAssoc($row);
+}
+
+var_dump($users);

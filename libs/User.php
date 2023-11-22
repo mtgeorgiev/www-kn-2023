@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+// declare(strict_types=1);
 
 class User {
     
@@ -7,9 +7,12 @@ class User {
 
     private $email;
 
-    public function __construct(int $id, string $email) {
+    private $registeredOn;
+
+    public function __construct(int $id, string $email, string $registeredOn) {
         $this->id = $id;
         $this->email = $email;
+        $this->registeredOn = $registeredOn;
     }
 
     public function getId(): int {
@@ -18,6 +21,10 @@ class User {
 
     public static function generateRandomId(): int {
         return 1;
+    }
+
+    public static function fromAssoc(array $arrayData): User {
+        return new User($arrayData['id'], $arrayData['email'], $arrayData['registered_on']);
     }
 
 }
