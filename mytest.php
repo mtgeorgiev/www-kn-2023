@@ -7,13 +7,23 @@ $sql   = "SELECT * FROM `users`";
 
 $conn = (new Db())->getConnection();
 
-$selectStatement = $conn->prepare($sql);
+// $selectStatement = $conn->prepare($sql);
 
-$users = [];
+// $users = [];
 
-$selectStatement->execute([]);
-foreach ($selectStatement->fetchAll() as $row) {
-    $users[] = User::fromAssoc($row);
-}
+// $selectStatement->execute([]);
+// foreach ($selectStatement->fetchAll() as $row) {
+//     $users[] = User::fromAssoc($row);
+// }
 
-var_dump($users);
+// var_dump($users);
+
+
+// $insertStatement = $conn->prepare('INSERT INTO `users` (`email`, `password`) VALUES(:email, :password)');
+
+// $insertStatement->execute([
+//     'email' => 'fmi@fmi.uni-sofia.bg',
+//     'password' => '0000'
+// ]);
+
+// echo $conn->lastInsertId();

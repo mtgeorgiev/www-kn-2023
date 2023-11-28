@@ -1,13 +1,13 @@
-.dve {
-    color: red;
-    font-weight: bold;
+#users-list {
+    padding: 10px;
+    width: 1000px;
 }
 
-.tri {
-    color: blue;
-    text-transform: uppercase;
+#users-list div.user-info:nth-child(2n+1) {
+    background-color: #d7faf1;
+    padding: 3px;
 }
 
-.hoverable:hover {
-    background-color: green;
+#loader[hidden] {
+    display: none;
 }

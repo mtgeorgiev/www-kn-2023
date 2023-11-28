@@ -1,7 +1,10 @@
 <?php
 // declare(strict_types=1);
 
-class User {
+/**
+ * Represents a user entity
+ */
+class User implements JsonSerializable{
     
     private $id;
 
@@ -23,8 +26,18 @@ class User {
         return 1;
     }
 
+    /**
+     * Factory method for constructing a user object instance from an associative array
+     */
     public static function fromAssoc(array $arrayData): User {
         return new User($arrayData['id'], $arrayData['email'], $arrayData['registered_on']);
     }
 
+    public function jsonSerialize(): array {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'registeredOn' => $this->registeredOn,
+        ];
+    }
 }
