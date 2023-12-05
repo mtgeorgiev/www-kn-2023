@@ -59,3 +59,26 @@ const userDataToHTMLElement = user => {
 
 document.getElementById('view-all-users')
         .addEventListener('click', onViewAllUsersClick);
+
+/*
+
+let userData = new FormData();
+//
+
+fetch('./users.php', {method:'POST',body:userData})
+  .then(r=>r.json())
+  .then(r=>console.log(r));
+
+
+  // logout
+  fetch('./sessions.php', {method:'DELETE'})
+  .then(r=>r.json())
+  .then(r=>console.log(r));
+
+
+  // check login status
+  fetch('./sessions.php')
+  .then(r=>r.json())
+  .then(r=>console.log(r));
+
+*/

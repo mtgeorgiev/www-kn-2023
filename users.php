@@ -5,10 +5,12 @@ $result = null;
 switch($_SERVER['REQUEST_METHOD']) {
     case 'GET': {
         $result = (new UserRequestHandler())->getUsers();
+        break;
     }
 
-    case 'POST': {
-
+    case 'POST': { // register
+        $result = (new UserRequestHandler())->register($_POST['email'], $_POST['password']);
+        break;
     }
     default: {
         // todo
