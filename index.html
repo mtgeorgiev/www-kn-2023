@@ -7,16 +7,23 @@
     <script src="./scripts/homepage.js" defer> </script>
   </head>
   <body>
-    <!--<form>
-        <div><input type="checkbox" name="name" value="1"/>ЕДНО</div>
-        <div><input type="checkbox" name="name" value="2"/>две</div>
-        <div class="hoverable"><input type="checkbox" name="name" value="3"/>три</div>
+    <header>
 
-        <input type="submit" value="Удри!" />
-    </form>-->
-    <input type="button" value="Виж всички потребители" id="view-all-users"/>
-    <div id="users-list">
-      <img id="loader" hidden src="https://i.gifer.com/ZZ5H.gif" />
-    </div>
+      <input type="button" value="Изход" id="logout" class="when-logged hidden" />
+    </header>
+    <section>
+      <input type="button" value="Виж всички потребители" id="view-all-users" class="when-logged hidden"/>
+      <div id="users-list">
+        <img id="loader" hidden src="https://i.gifer.com/ZZ5H.gif" />
+      </div>
+    </section>
+    
+    <form id="login" class="when-not-logged hidden">
+      <input type="email" name="email" placeholder="Имейл адрес"/>
+      <input type="password" name="password" placeholder="Парола"/>
+      <input type="submit" value="Влез" />
+    </form>
+    
+    
   </body>
 </html>

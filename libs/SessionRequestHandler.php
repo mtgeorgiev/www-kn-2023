@@ -2,8 +2,8 @@
 
 class SessionRequestHandler {
 
-    public function checkLoginStatus(): array {
-        return $_SESSION;
+    public function checkLoginStatus(): bool {
+        return isset($_SESSION['email']);
     }
 
     public function login(string $email, string $password): bool {

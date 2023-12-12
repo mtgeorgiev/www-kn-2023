@@ -1,4 +1,29 @@
 
+const onPageLoad = () => {
+    
+    clearUsersListContainer();
+
+    fetch('./sessions.php')
+        .then(r=>r.json())
+        .then(r=> {
+            if (r.result) { // user is logged
+                document.querySelectorAll('.when-logged').forEach(element => {
+                    element.classList.remove('hidden');
+                });
+                document.querySelectorAll('.when-not-logged').forEach(element => {
+                    element.classList.add('hidden');
+                });
+            } else { // user is not logged
+                document.querySelectorAll('.when-logged').forEach(element => {
+                    element.classList.add('hidden');
+                });
+                document.querySelectorAll('.when-not-logged').forEach(element => {
+                    element.classList.remove('hidden');
+                });
+            }
+        });
+};
+
 const onViewAllUsersClick = event => {
 
     if (event.target.getAttribute('disabled')) {
@@ -57,28 +82,45 @@ const userDataToHTMLElement = user => {
     return containerDiv;
 };
 
+const onLoginFormSubmit = event => {
+    event.preventDefault();
+
+    const formData = new FormData(document.getElementById('login'));
+    fetch('./sessions.php', {method:'POST',body:formData})
+        .then(r=>r.json())
+        .then(r=> {
+            if (r.result) { // successful login
+                onPageLoad();
+            } else { // not successful
+                alert('Неуспешно влизане');
+            }
+        });
+}
+
+const onLogoutButtonClick = () => {
+    fetch('./sessions.php', {method:'DELETE'})
+        .then(r => r.json())
+        .then(r => {
+            onPageLoad();
+        });
+}
+
 document.getElementById('view-all-users')
         .addEventListener('click', onViewAllUsersClick);
 
+document.getElementById('login')
+        .addEventListener('submit', onLoginFormSubmit);
+
+document.getElementById('logout')
+        .addEventListener('click', onLogoutButtonClick);
+
+onPageLoad();
+
+
 /*
 
-let userData = new FormData();
-//
-
+// register
 fetch('./users.php', {method:'POST',body:userData})
   .then(r=>r.json())
   .then(r=>console.log(r));
-
-
-  // logout
-  fetch('./sessions.php', {method:'DELETE'})
-  .then(r=>r.json())
-  .then(r=>console.log(r));
-
-
-  // check login status
-  fetch('./sessions.php')
-  .then(r=>r.json())
-  .then(r=>console.log(r));
-
 */

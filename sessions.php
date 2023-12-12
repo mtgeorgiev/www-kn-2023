@@ -14,7 +14,8 @@ switch($_SERVER['REQUEST_METHOD']) {
     }
 
     case 'DELETE': { // logout
-        $result = (new SessionRequestHandler())->logout();
+        (new SessionRequestHandler())->logout();
+        $result = true;
         break;
     }
 
@@ -23,4 +24,4 @@ switch($_SERVER['REQUEST_METHOD']) {
     }
 }
 
-echo json_encode($result, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+echo json_encode(['result' => $result], JSON_UNESCAPED_UNICODE);
